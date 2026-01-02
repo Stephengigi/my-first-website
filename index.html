@@ -69,19 +69,48 @@
         .avatar {
             width: 150px;
             height: 150px;
-            border-radius: 50%;
             margin: 0 auto 20px;
-            /* 炫彩边框 */
-            border: 5px solid;
-            border-image: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24) 1;
+            position: relative;
+            display: block;
             /* 旋转动画 */
             animation: rotate 3s linear infinite;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 60px;
-            color: white;
+            /* 锐化四个角 - 清晰的圆形 */
+            border-radius: 50%;
+        }
+        
+        /* 蒂芙尼渐变边框 */
+        .avatar::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            width: calc(100% + 10px);
+            height: calc(100% + 10px);
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0ABAB5, #7FD3D0, #A8E6E3, #0D98BA, #0ABAB5);
+            z-index: 0;
+            /* 跟随父元素旋转，不需要单独设置动画 */
+        }
+        
+        /* 照片内容 */
+        .avatar::after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: calc(100% - 10px);
+            height: calc(100% - 10px);
+            border-radius: 50%;
+            background-image: url('stephen.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 1;
+            /* 图片锐化处理 */
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            filter: contrast(1.2) brightness(1.05) saturate(1.1);
+            /* 跟随父元素旋转，不需要单独设置动画 */
         }
 
         /* 头像旋转动画 */
@@ -225,7 +254,6 @@
             .avatar {
                 width: 120px;
                 height: 120px;
-                font-size: 50px;
             }
         }
     </style>
@@ -233,7 +261,7 @@
 <body>
     <div class="container">
         <!-- 头像区域 -->
-        <div class="avatar">👤</div>
+        <div class="avatar"></div>
         
         <!-- 标题区域 -->
         <h1>Stephen</h1>
