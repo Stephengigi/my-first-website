@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stephen - 个人介绍</title>
+    <style>
+        /* 重置默认样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 设置页面基础样式 */
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            /* 炫彩渐变背景 */
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+            background-size: 400% 400%;
+            /* 背景动画效果 */
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* 背景渐变动画 */
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* 主容器卡片 */
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            /* 卡片出现动画 */
+            animation: fadeInUp 1s ease-out;
+            text-align: center;
+        }
+
+        /* 淡入上升动画 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 头像样式 */
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            /* 炫彩边框 */
+            border: 5px solid;
+            border-image: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24) 1;
+            /* 旋转动画 */
+            animation: rotate 3s linear infinite;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: white;
+        }
+
+        /* 头像旋转动画 */
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* 标题样式 */
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            /* 文字渐变效果 */
+            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* 副标题 */
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        /* 分隔线 */
+        .divider {
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            margin: 30px auto;
+            border-radius: 2px;
+        }
+
+        /* 信息卡片 */
+        .info-section {
+            text-align: left;
+            margin: 20px 0;
+        }
+
+        .info-item {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            padding: 15px 20px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border-left: 4px solid;
+            border-image: linear-gradient(180deg, #667eea, #764ba2) 1;
+            /* 悬停效果 */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .info-content {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* 技能标签 */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            /* 脉冲动画 */
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* 脉冲动画 */
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* 社交链接 */
+        .social-links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: scale(1.2) rotate(360deg);
+            background: linear-gradient(135deg, #f093fb, #4facfe);
+        }
+
+        /* 响应式设计 - 移动端适配 */
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .avatar {
+                width: 120px;
+                height: 120px;
+                font-size: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头像区域 -->
+        <div class="avatar">👤</div>
+        
+        <!-- 标题区域 -->
+        <h1>Stephen</h1>
+        <p class="subtitle">白帽子志愿者</p>
+        
+        <div class="divider"></div>
+        
+        <!-- 个人信息区域 -->
+        <div class="info-section">
+            <div class="info-item">
+                <div class="info-label">📧 邮箱</div>
+                <div class="info-content">Stephen2019@gmail.com</div>
+            </div>
+            
+            <div class="info-item">
+                <div class="info-label">📍 位置</div>
+                <div class="info-content">中国 · 北京</div>
+            </div>
+            
+            <div class="info-item">
+                <div class="info-label">💼 职业</div>
+                <div class="info-content">VPS Overseas Support</div>
+            </div>
+            
+            <div class="info-item">
+                <div class="info-label">📖 简介</div>
+                <div class="info-content">
+                    平时专注于 VPS 服务器运维和网络安全相关工作，偶尔以白帽子身份参与一些安全项目。
+                    生活中喜欢安静地学习新技术，看看书，偶尔帮朋友解决一些技术问题。
+                    相信技术应该用来保护而非破坏，保持低调务实的态度，做好自己的本职工作就好。
+                </div>
+            </div>
+        </div>
+        
+        <!-- 技能标签 -->
+        <div class="skills">
+            <span class="skill-tag">VPS</span>
+            <span class="skill-tag">Linux</span>
+            <span class="skill-tag">Network Security</span>
+            <span class="skill-tag">Server Management</span>
+            <span class="skill-tag">Cybersecurity</span>
+        </div>
+        
+        <!-- 社交链接 -->
+        <div class="social-links">
+            <a href="#" class="social-link">📱</a>
+            <a href="#" class="social-link">💬</a>
+            <a href="#" class="social-link">🌐</a>
+        </div>
+    </div>
+</body>
+</html>
+
